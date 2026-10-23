@@ -1,5 +1,5 @@
-name: Vanilla Minimal # Replace this name with your image name
-id: vanillaos-minimal # Replace this ID with your image ID
+name: Vanilla Xfce # Replace this name with your image name
+id: vanillaos-xfce # Replace this ID with your image ID
 vibversion: 1.0.7
 stages:
   - id: build
