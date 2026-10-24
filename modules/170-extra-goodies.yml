@@ -5,7 +5,8 @@ sources:
       - eza
       - oomd
       - tmux
-      - dash
+      - btop
+      - fastfetch
       - zoxide
       - blueman
       - network-manager-gnome
