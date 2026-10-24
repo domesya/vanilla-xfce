@@ -26,11 +26,11 @@ stages:
       - /var/lib/dbus/machine-id
       - /var/log/*
     modules:
-      # - name: init-setup
-      #   type: shell
-      #   commands:
-      #   - lpkg --unlock
-      #   - apt-get update
+      - name: init-setup
+        type: shell
+        commands:
+          - lpkg --unlock
+          - apt-get update
       - name: init-setup
         type: shell
         commands:
