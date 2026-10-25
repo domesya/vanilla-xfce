@@ -3,6 +3,8 @@ type: apt
 sources:
   - packages:
       - eza
+      - zsh
+      - fish
       - oomd
       - tmux
       - btop
