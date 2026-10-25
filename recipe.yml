@@ -26,7 +26,7 @@ stages:
       - /var/lib/dbus/machine-id
       - /var/log/*
     modules:
-      - name: init-setup
+      - name: init-setup-2
         type: shell
         commands:
           - lpkg --unlock
