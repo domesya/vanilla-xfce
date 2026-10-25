@@ -23,7 +23,13 @@ git checkout "$WINTC_VERSION"
 
 apt-get update
 
-./packaging/chkdeps.sh | awk -F':' '!/libwintc/ { print $2 }' | xargs apt-get install -y
+chkdeps_status=0
+chkdeps_out="$(./packaging/chkdeps.sh)" || chkdeps_status=$?
+if [[ $chkdeps_status -gt 2 ]]; then
+    echo "wintc-install: chkdeps failed (status $chkdeps_status)" >&2
+    exit 1
+fi
+echo "$chkdeps_out" | awk -F':' '!/libwintc/ { print $2 }' | xargs -r apt-get install -y
 
 ./packaging/buildall.sh
 
