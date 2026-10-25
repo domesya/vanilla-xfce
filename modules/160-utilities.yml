@@ -5,3 +5,4 @@ sources:
     - zenity
     - flatpak
     - locales-all
+    - blueman
