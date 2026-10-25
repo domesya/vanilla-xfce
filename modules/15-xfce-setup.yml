@@ -8,22 +8,30 @@ sources:
       - mate-polkit
       - lightdm
       - lightdm-gtk-greeter
+      - libwnck-3-0
       - libwnck-3-dev 
       - libwnck-3-common
+      - libclutter-1.0-0
       - libclutter-1.0-dev 
+      - libglib2.0-0
       - libglib2.0-dev
-      - libgio-2.0-dev-bin 
       - libgio-2.0-dev 
+      - libgio-2.0-dev-bin 
       - xfconf
       - libxfconf-0-dev
       - libgarcon-1-dev 
       - libgarcon-1-0
-      - libgtk-3-dev 
-      - libxfce4util-dev 
+      - libgtk-3-bin
+      - libgtk-3-dev
+      - libxfce4util-bin
+      - libxfce4util-dev
+      - libxfce4ui-2-0
       - libxfce4ui-2-dev
-      - libxcomposite-dev 
-      - libxdamage-dev 
+      - libxcomposite1
+      - libxcomposite-dev
+      - libxdamage1
+      - libxdamage-dev
+      - libxinerama1
       - libxinerama-dev 
       - xorg-dev 
       - glib2.0
-      - libclutter-1.0-0
