@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  CUSTOM_IMAGE_NAME: vanillaos-xfce
+  CUSTOM_IMAGE_NAME: vanilla-xfce
   BUILDX_NO_DEFAULT_ATTESTATIONS: 1
 
 jobs:
