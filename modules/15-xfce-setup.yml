@@ -26,3 +26,4 @@ sources:
       - libxinerama-dev 
       - xorg-dev 
       - glib2.0
+      - libclutter-1.0-0
