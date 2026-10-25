@@ -12,6 +12,7 @@ sources:
       - oomd
       - tmux
       - btop
+      - sshfs
       - fastfetch
       - zoxide
       - playerctl

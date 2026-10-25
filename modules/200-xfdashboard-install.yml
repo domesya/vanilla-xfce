@@ -1,0 +1,12 @@
+name: xfdashboard-install
+type: shell
+sources:
+  - type: git
+    url: https://github.com/xfce-mirror/xfdashboard.git
+    branch: master
+    commit: b15d3831bd47559b0fb6bb1f24cfcc95c824f3e7
+commands:
+  - cd /sources/xfdashboard-install/xfdashboard
+  - meson setup build
+  - meson compile -C build
+  - meson install -C build
