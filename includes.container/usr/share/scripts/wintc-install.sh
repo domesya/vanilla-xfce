@@ -4,9 +4,9 @@ WINTC_VERSION="5adad1c4f54003680e327e33a20690469423a1dd"
 tmp="$(mktemp -d)"
 
 case "${ARCH:-$(uname -m)}" in 
-    amd64|x86_64) arch=x86_64
+    amd64|x86_64) arch=x86_64;
         ;;
-    aarch64|arm64) arch=aarch64
+    aarch64|arm64) arch=aarch64;
         ;;
     *) >&2 echo "wintc-install: unsupported architecture: ${ARCH:-$(uname -m)}"; exit 1; 
         ;; 
@@ -33,7 +33,11 @@ if [[ $chkdeps_status -ne 0 && $chkdeps_status -ne 2 ]]; then
     echo "wintc-install: chkdeps failed (status $chkdeps_status)" >&2
     exit 1
 fi
-echo "$chkdeps_out" | awk -F':' '!/libwintc/ { print $2 }' | xargs -r apt-get install -y
+
+raw_deps="$( echo "$chkdeps_out" | awk -F':' '!/libwintc/ { print $2 }' | tr '\n' ' ' )"
+#raw_deps="$(echo "$chkdeps_out" | cut -d':' -f2 | tr '\n' ' ')"
+
+apt-get install -y "$raw_deps"
 
 ./packaging/buildall.sh
 
