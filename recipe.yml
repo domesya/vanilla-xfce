@@ -89,6 +89,7 @@ stages:
           - modules/140-password.yml
           - modules/160-utilities.yml
           - modules/170-extra-goodies.yml
+          - modules/190-wintc-install.yml
           - modules/997-misc-setup.yml
           - modules/999-cleanup.yml
       - name: cleanup-and-sysconf-setup

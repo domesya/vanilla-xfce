@@ -7,6 +7,12 @@ esac
 
 tmp="$(mktemp -d)"
 
+_cleanup() {
+    rm -rf "$tmp"
+}
+
+trap _cleanup INT TERM EXIT
+
 CURL_RETRY=(--retry 5 --retry-all-errors --retry-delay 10)
 CPAK_VERSION=$(curl -fsSLI "${CURL_RETRY[@]}" -o /dev/null -w '%{url_effective}' \
     https://github.com/Containerpak/cpak/releases/latest | sed 's#.*/releases/tag/##')
@@ -22,4 +28,3 @@ curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-SHA256SUMS" "${CPAK_BASE}/SHA256SUMS
 
 install -Dm755 "$tmp/cpak-linux-$arch" /usr/bin/cpak
 install -Dm755 "$tmp/cpak-storaged-linux-$arch" /usr/bin/cpak-storaged
-rm -rf "$tmp"

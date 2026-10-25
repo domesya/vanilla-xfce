@@ -10,6 +10,12 @@ case "${ARCH:-$(uname -a)}" in
         ;;
 esac
 
+_cleanup() {
+    rm -rf "$tmp"
+}
+
+trap _cleanup INT TERM EXIT
+
 cd "$tmp"
 git clone "https://github.com/rozniak/xfce-winxp-tc" ./xfce-winxp-tc
 cd ./xfce-winxp-tc
