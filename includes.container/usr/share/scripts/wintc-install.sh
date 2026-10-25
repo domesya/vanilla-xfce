@@ -3,11 +3,13 @@ set -euo pipefail
 WINTC_VERSION="5adad1c4f54003680e327e33a20690469423a1dd"
 tmp="$(mktemp -d)"
 
-case "${ARCH:-$(uname -a)}" in 
-    amd64) arch=x86_64
+case "${ARCH:-$(uname -m)}" in 
+    amd64|x86_64) arch=x86_64
         ;;
-    aarch64) arch=aarch64
+    aarch64|arm64) arch=aarch64
         ;;
+    *) >&2 echo "wintc-install: unsupported architecture: ${ARCH:-$(uname -m)}"; exit 1; 
+        ;; 
 esac
 
 _cleanup() {
