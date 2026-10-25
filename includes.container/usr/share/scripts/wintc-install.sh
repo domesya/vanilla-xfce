@@ -27,7 +27,9 @@ apt-get update
 
 chkdeps_status=0
 chkdeps_out="$(./packaging/chkdeps.sh)" || chkdeps_status=$?
-if [[ $chkdeps_status -gt 2 ]]; then
+
+# if [[ $chkdeps_status -gt 2 ]]; then
+if [[ $chkdeps_status -ne 0 && $chkdeps_status -ne 2 ]]; then
     echo "wintc-install: chkdeps failed (status $chkdeps_status)" >&2
     exit 1
 fi
