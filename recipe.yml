@@ -1,6 +1,6 @@
 name: Vanilla Xfce # Replace this name with your image name
 id: vanillaos-xfce # Replace this ID with your image ID
-vibversion: 1.0.7
+vibversion: 1.1.0
 stages:
   - id: build
     base: ghcr.io/vanilla-os/core:latest # Optionally, Replace this image URL with a different one i.e. gnome-nvidia:latest, etc

@@ -2,3 +2,13 @@ name: wintc-install
 type: shell
 commands:
   - bash /usr/share/scripts/wintc-install.sh
+
+modules:
+  - name: wintc-deps 
+    type: apt
+    sources:
+      - packages:
+          - cmake
+          - build-essential
+          - meson
+          - gcc
