@@ -37,7 +37,9 @@ fi
 raw_deps="$( echo "$chkdeps_out" | awk -F':' '!/libwintc/ { print $2 }' | tr '\n' ' ' )"
 #raw_deps="$(echo "$chkdeps_out" | cut -d':' -f2 | tr '\n' ' ')"
 
-apt-get install -y "$raw_deps"
+if [[ -n "$raw_deps" ]]; then
+    apt-get install -y $raw_deps
+fi
 
 ./packaging/buildall.sh
 
