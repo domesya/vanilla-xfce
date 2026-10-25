@@ -69,7 +69,6 @@ stages:
           - modules/10-vanilla-abroot-rollback-notifier.yml
           - modules/15-xfce-setup.yml
           - modules/18-libs-extra.yml
-          - modules/20-first-setup-user.yml
           - modules/20-install-cpak.yml
           - modules/50-install-debs.yml
           - modules/50-laptop-goodies.yml
