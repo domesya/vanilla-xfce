@@ -1,5 +1,6 @@
 name: first-setup-user
 type: shell
 commands:
-  - getent group vanilla-first-setup || groupadd -g 990 vanilla-first-setup
-  - id -u vanilla || useradd -m -u 1000 -s /bin/bash -G vanilla-first-setup vanilla
+  # - getent group vanilla-first-setup || groupadd -g 990 vanilla-first-setup
+  # - id -u vanilla || useradd -m -u 1000 -s /bin/bash -G vanilla-first-setup vanilla
+  - bash /usr/share/scripts/vanilla-user.sh
