@@ -8,6 +8,7 @@ sources:
       - mate-polkit
       - lightdm
       - lightdm-gtk-greeter
+      - lightdm-gtk-greeter-settings
       - libwnck-3-0
       - libwnck-3-dev 
       - libwnck-3-common
