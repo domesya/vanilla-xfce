@@ -1,4 +1,5 @@
-set -euo pipefail
+#!/bin/sh
+set -eu
 case "$(uname -m)" in
   amd64|x86_64) arch=amd64 ;;
   arm64|aarch64) arch=arm64 ;;
@@ -13,14 +14,28 @@ _cleanup() {
 
 trap _cleanup INT TERM EXIT
 
-CURL_RETRY=(--retry 5 --retry-all-errors --retry-delay 10)
-CPAK_VERSION=$(curl -fsSLI "${CURL_RETRY[@]}" -o /dev/null -w '%{url_effective}' \
+
+#CURL_RETRY=(--retry 5 --retry-all-errors --retry-delay 10)
+#CPAK_VERSION=$(curl -fsSLI "${CURL_RETRY[@]}" -o /dev/null -w '%{url_effective}' \
+#    https://github.com/Containerpak/cpak/releases/latest | sed 's#.*/releases/tag/##')
+
+run_curl() {
+  curl --retry 5 --retry-all-errors --retry-delay 10 "$@"
+}
+
+CPAK_VERSION=$(run_curl -fsSLI -o /dev/null -w '%{url_effective}' \
     https://github.com/Containerpak/cpak/releases/latest | sed 's#.*/releases/tag/##')
+
 [ -n "${CPAK_VERSION}" ] || { echo "ERROR: could not find the latest cpak release"; exit 1; }
 CPAK_BASE="https://github.com/Containerpak/cpak/releases/download/${CPAK_VERSION}"
-curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-linux-$arch" "${CPAK_BASE}/cpak-linux-$arch"
-curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-storaged-linux-$arch" "${CPAK_BASE}/cpak-storaged-linux-$arch"
-curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-SHA256SUMS" "${CPAK_BASE}/SHA256SUMS"
+
+# curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-linux-$arch" "${CPAK_BASE}/cpak-linux-$arch"
+# curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-storaged-linux-$arch" "${CPAK_BASE}/cpak-storaged-linux-$arch"
+# curl -fsSL "${CURL_RETRY[@]}" -o "$tmp/cpak-SHA256SUMS" "${CPAK_BASE}/SHA256SUMS"
+
+run_curl -fsSL -o "$tmp/cpak-linux-$arch" "${CPAK_BASE}/cpak-linux-$arch"
+run_curl -fsSL -o "$tmp/cpak-storaged-linux-$arch" "${CPAK_BASE}/cpak-storaged-linux-$arch"
+run_curl -fsSL -o "$tmp/cpak-SHA256SUMS" "${CPAK_BASE}/SHA256SUMS"
 
 (
     cd "$tmp" && sha256sum -c --ignore-missing cpak-SHA256SUMS

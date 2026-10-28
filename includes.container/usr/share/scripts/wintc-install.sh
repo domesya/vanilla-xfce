@@ -1,4 +1,5 @@
-set -euo pipefail
+#!/bin/sh 
+set -eu
 
 WINTC_VERSION="5adad1c4f54003680e327e33a20690469423a1dd"
 tmp="$(mktemp -d)"
@@ -29,15 +30,15 @@ chkdeps_status=0
 chkdeps_out="$(./packaging/chkdeps.sh)" || chkdeps_status=$?
 
 # if [[ $chkdeps_status -gt 2 ]]; then
-if [[ $chkdeps_status -ne 0 && $chkdeps_status -ne 2 ]]; then
+if [ "$chkdeps_status" -ne 0 ] && [ "$chkdeps_status" -ne 2 ]; then
     echo "wintc-install: chkdeps failed (status $chkdeps_status)" >&2
     exit 1
 fi
 
-raw_deps="$( echo "$chkdeps_out" | awk -F':' '!/libwintc/ { print $2 }' | tr '\n' ' ' )"
+raw_deps="$(echo "$chkdeps_out" | awk -F':' '!/libwintc/ { print $2 }' | tr '\n' ' ')"
 #raw_deps="$(echo "$chkdeps_out" | cut -d':' -f2 | tr '\n' ' ')"
 
-if [[ -n "$raw_deps" ]]; then
+if [ -n "${raw_deps:-}" ]; then
     apt-get install -y $raw_deps
 fi
 
