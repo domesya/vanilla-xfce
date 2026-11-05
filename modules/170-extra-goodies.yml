@@ -22,3 +22,4 @@ sources:
       - playerctl
       - ripgrep
       - network-manager-gnome
+      - gparted
