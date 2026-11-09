@@ -21,7 +21,7 @@ sources:
       - qt-style-kvantum-themes
       - playerctl
       - ripgrep
-      - network-manager-gnome
+      - network-manager-applet
       - gparted
       - emerald
       - emerald-themes
