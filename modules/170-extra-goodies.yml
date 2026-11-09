@@ -24,4 +24,5 @@ sources:
       - network-manager-gnome
       - gparted
       - emerald
+      - emerald-themes
       - compiz
