@@ -23,3 +23,5 @@ sources:
       - ripgrep
       - network-manager-gnome
       - gparted
+      - emerald
+      - compiz

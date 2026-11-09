@@ -8,3 +8,4 @@ commands:
   - printf '[Desktop Entry]\nName=FirstSetup\nComment=This session provides a First Setup interface\nExec=/usr/bin/startxfce4\nType=Application\nDesktopNames=XFCE\nNoDisplay=true\n' > /usr/share/xsessions/firstsetup.desktop
   - printf '[Desktop Entry]\nName=FirstSetup\nComment=This session provides a First Setup interface\nExec=/usr/bin/startxfce4\nType=Application\nDesktopNames=XFCE\nNoDisplay=true\n' > /usr/share/wayland-sessions/firstsetup.desktop
   - rm -f /usr/lib/*/gnome-software/plugins-*/libgs_plugin_packagekit.so
+  
